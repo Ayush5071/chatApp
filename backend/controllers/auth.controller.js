@@ -29,7 +29,7 @@ export const loginUser = async(req,res) =>{
 export const logoutUser = (req,res) =>{
     try {
         res.cookie("jwt","",{maxAge:0});
-        res.status(200).json({message:"LOgged out user succesfully"});
+        res.status(200).json({message:"Logged out user succesfully"});
 
     } catch (error) {
         console.log("error iin login conttroller : ",error);
@@ -75,7 +75,7 @@ export const signUpUser = async(req,res) =>{
                 username:newUser.username,
                 password:newUser.password,
                 profilePic:newUser.profilePic,
-            })
+            });
         } else{
             res.status(400).json({error:"Invalid User data"});   
         }

@@ -18,7 +18,8 @@ export const SignUp = () => {
 	})
 	const handleSubmit = (e)=>{
 		e.preventDefault();
-		signup(inputs)
+		signup(inputs);
+		console.log(inputs);
 	}
 	return (
 		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
