@@ -6,6 +6,7 @@ const useSignUp = () => {
     const {setAuthUser} = useAuthContext();
 
     const [loading,setLoading] = useState(false);
+    
     const signup = async({fullName,username,password,confirmPassword,gender})=>{
         setLoading(true);
         const success = handleInputErrors({fullName,username,password,confirmPassword,gender});
