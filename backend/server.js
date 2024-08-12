@@ -18,7 +18,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
-app.use(cors());
+const corsOptions = {
+    origin: 'http://localhost:5173', // Your React app's URL
+    credentials: true // Allow cookies to be sent
+};
+
+app.use(cors(corsOptions));
 app.use(express.json()); // to parse the incoming request using JSON payloads from (req.body); 
 app.use(cookieParser());
 

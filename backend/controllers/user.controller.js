@@ -8,7 +8,7 @@ export const getUserForSideBars = async(req,res) =>{
         res.status(200).json(filteredUsers);
 
     } catch (error) {
-        console.log("Error in user Controller -> ",error.message)
+        console.log("Error in user Controller -> ",error)
         res.status(500).json({error:"internal server error"});        
     }
 }
