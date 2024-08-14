@@ -12,12 +12,13 @@ export const sendMessage = async(req,res) => {
         let conversation = await Conversation.findOne({
             participants:{$all: [senderId,receiverId]}, //The $all operator ensures that both values are present in the participants array.
         });
-
+        
         if(!conversation){
             conversation = await Conversation.create({
                 participants:[senderId,receiverId],
             })
         }
+        // console.log(conversation);
 
         const newMessage = new Message({
             senderId,
@@ -27,6 +28,7 @@ export const sendMessage = async(req,res) => {
         if(newMessage){
             conversation.messages.push(newMessage._id);
         }
+        // console.log(newMessage);
 
         // They will run synchronously --> that line by line 
         // await newMessage.save();
