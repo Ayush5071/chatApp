@@ -6,6 +6,6 @@ export const extractTime = (dateString) => {
 }
 
 // it is helper function to create a single digit number to targetted 2 digit no. if not adds zero at the ends.
-const padZero = () =>{
-    return Number.toString().padStart(2,"0");
+const padZero = (num) =>{
+    return num.toString().padStart(2,"0");
 }

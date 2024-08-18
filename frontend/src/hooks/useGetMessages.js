@@ -9,7 +9,6 @@ const useGetMessages = () => {
     useEffect(() => {
         const getMessages = async () => {
             if (!selectedConversation?._id){
-                console.log("BS YHA SE GYA YAAAR");
                 return;
             }
             setLoading(true);
