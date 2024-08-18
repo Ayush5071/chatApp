@@ -6,8 +6,8 @@ export const sendMessage = async(req,res) => {
         const {message} = req.body;
         const {id:receiverId} = req.params;
         const senderId = req.user._id;
-        console.log("Sender Id ->",senderId);
-        console.log("Receiver Id ->",receiverId);
+        // console.log("Sender Id ->",senderId);
+        // console.log("Receiver Id ->",receiverId);
         
         let conversation = await Conversation.findOne({
             participants:{$all: [senderId,receiverId]}, //The $all operator ensures that both values are present in the participants array.
@@ -46,8 +46,10 @@ export const sendMessage = async(req,res) => {
 }
 
 export const getMessages = async(req,res)=>{
+    // console.log("chala");
     try {
         const {id:userToChatId} = req.params;
+        // console.log("ye chala")
         const senderId = req.user._id;
         const conversation = await Conversation.findOne({
             participants: {$all:[senderId,userToChatId]}
