@@ -1,26 +1,22 @@
 import express from "express"
 import dotenv from "dotenv";
-import cors from "cors"
+import cors from "cors";
 import cookieParser from "cookie-parser";
-
 
 import authRoutes from "./routes/auth.routes.js"
 import messageRoutes from "./routes/message.routes.js"
 import userRoutes from "./routes/user.routes.js"
 
 import { ConnectToDb } from "./db/connectToMongoDb.js";
+import { app, server } from "./socket/socket.js";
 
 dotenv.config();
 
-
-
-const app = express();
 const PORT = process.env.PORT || 3000;
 
-
 const corsOptions = {
-    origin: 'http://localhost:5173', // Your React app's URL
-    credentials: true // Allow cookies to be sent
+    origin: 'http://localhost:5173',
+    credentials: true
 };
 
 app.use(cors(corsOptions));
@@ -35,7 +31,7 @@ app.use("/api/users",userRoutes);
 //     res.send("hello");
 // })
 
-app.listen(PORT,()=> {
+server.listen(PORT,()=> {
     ConnectToDb();
     console.log(`server is running at port ${PORT}`)
 });
